@@ -36,3 +36,6 @@ android {
         compile project(':openCVLibrary330')
     }
 }
+dependencies {
+    compile 'com.android.support:design:25.3.1'
+}
