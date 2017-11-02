@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/07f9ad7759f4ca115f6809cfad21fb8ed8c443af/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3eb05dee40416f56d50cc72901a024b88851c2d3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.1.0_d8650409782cc8fa3e283925850ac56d1f44f176/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/f6978e1223cb7a34ec8ef30699d63c44efab8873/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="58b12bdb21a84f22e0dc3b047aeceb0a546b1b44">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3be4c495930f1d1ba22654fe7f90897cb0814b52/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/a06bfd11bf3380fc2bb3e88682bfd4adc99c5949/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_595c814af93f59d18037f6260ca9463755cc5a4e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/Android Studio Projects/HCR/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3b1a875129f6116ce3f5a4ca627f9e61b0c889df">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_a185a58cee36a3d1d78b4fbdc989adf523e6045c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/fa4a45593d630209d5464e10e71df3045a1a073c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2e468f1b814cd4b2d1eec9dba5139bf86cb8a72f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/cdd531c3edb490df475fe372ac442488e27c3d94/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b12cd9c87c3dfb012a911b6e38d2444ed0a65e1f">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_768b1e8779ada13639189666a709645f4bcb082f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.0.0/a2d487452376193fc8c103dd2b9bd5f2b1b44563/common-1.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/common-1.0.0_98a8ca3ad0cf1bd994f9df32beb28271c6783e29/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/367dec0cfab257c713dcd75e5613813eefdb161a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2b5ae49d11c37bf34f97b393d086456042015b75/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/2ac4b2057b72d15e7754b104dec61a7bb977b4e5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a37fc31c5ceeaa4532a37358add1b189d8db4af1">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_986c5b64b42c1f0307157c111371643aa4a1b329/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/6566b27f28d0eac47a5694ebfcf61e315f1f41d5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fb11006d65e297804a473d704ee2b026b19fe94c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/f0aa1a4e766ed87ffef50162f218de1a55911002/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c019a62d6750af06726b5db9ce82da47527ef422/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/Android Studio Projects/HCR/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7f90ca2234bb89a591d806cc8eee9bda42d4de1b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/99fe8f48bc2b13908c6ea13ae1ac91d5a35bda8c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ba7ff6980305466cb466ffce2c43e86a9b7772f6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/7b5bd588a831fe31b26de7cb8ba603f2920310dd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_81d4070b57df588b35d328f5486617bee2da21c6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/cdc520c519b3cfbcb8edd0611a388677a086036c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_27d1271806eea39598feb8591d52bdddfea9ca51/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.android/build-cache/af5cc12253f9de3ddcdd2eb1c1e5c736bd904b17/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0a7b756aff558c08df17577778becddbb3c2e18e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/meet/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.0.0/e414a4cb28434e25c4f6aa71426eb20cf4874ae9/common-1.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="/home/meet/Android Studio Projects/HCR/app/build/intermediates/transforms/dex/debug/folders/1000/10/common-1.0.0_a366c9939c63fc2dd1c89ae487dd17e6d0c3e69a/classes.dex" />
+    </item>
+
+</items>
