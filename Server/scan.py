@@ -32,7 +32,7 @@ def find_contours():
 
 	print("****Finished Finding Contours******")
 
-
+#Handles the OnClick event for setMouseCallBack
 def click(event,x,y,flags,param)
 	global image,man_contours
 
@@ -43,13 +43,14 @@ def click(event,x,y,flags,param)
 		#Found 4 contours..
 		if len(man_contours)==4:
 			print("*****Found 4 Contours :",man_contours)
+			
+	return
 			#Line drawing feature...
 			# Drawing Polygon
 
 			# To draw a polygon, first you need coordinates of vertices. Make those points into an array of shape ROWSx1x2 where ROWS are number of vertices and it should be of type int32. Here we draw a small polygon of with four vertices in yellow color.
-
-			pts = np.array(man_contours)
-			pts = pts.reshape((-1,1,2))
+			#pts = np.array(man_contours)
+			#pts = pts.reshape((-1,1,2))
 			#cv2.polylines(image,[pts],True,(0,255,255))
 			#cv2.imshow("image", image)
 			#     pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
