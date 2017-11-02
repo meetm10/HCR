@@ -13,27 +13,9 @@ import cv2
 #Manual Contours
 man_contours = []
 
-#Manually find contours for Edge Detection
-def find_contours():
+#Handles the on_click event for setMouseCallBack
+def on_click(event,x,y,flags,param)
 
-	global image,man_contours
-
-	print("\n\n*********Manually Finding Contours, click on 4 corners to select a Region***********")
-
-	#Create a window and setMouseCallback
-	cv2.namedWindow("image")
-	cv2.setMouseCallback("image",click)
-
-	# keep looping until the 'q' key is pressed
-	while True:
-		# display the image and wait for a keypress
-		cv2.imshow("image", image)
-		key = cv2.waitKey(1) & 0xFF
-
-	print("****Finished Finding Contours******")
-
-#Handles the OnClick event for setMouseCallBack
-def click(event,x,y,flags,param)
 	global image,man_contours
 
 	if event == cv2.EVENT_LBUTTONDOWN:
@@ -44,7 +26,6 @@ def click(event,x,y,flags,param)
 		if len(man_contours)==4:
 			print("*****Found 4 Contours :",man_contours)
 			
-	return
 			#Line drawing feature...
 			# Drawing Polygon
 
@@ -56,6 +37,30 @@ def click(event,x,y,flags,param)
 			#     pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
 			#     pts = pts.reshape((-1,1,2))
 			#     cv2.polylines(img,[pts],True,(0,255,255))
+			
+	return
+
+
+#Manually find contours for Edge Detection
+def find_contours():
+
+	global image,man_contours
+
+	print("\n\n*********Manually Finding Contours, click on 4 corners to select a Region***********")
+
+	#Create a window and setMouseCallback
+	cv2.namedWindow("image")
+	cv2.setMouseCallback("image",on_click)
+
+	# keep looping until the 'q' key is pressed
+	while True:
+		# display the image and wait for a keypress
+		cv2.imshow("image", image)
+		key = cv2.waitKey(1) & 0xFF
+
+	print("****Finished Finding Contours******")
+
+
 
 
 def main():
