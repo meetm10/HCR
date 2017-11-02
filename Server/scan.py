@@ -14,7 +14,7 @@ import cv2
 man_contours = []
 
 #Handles the on_click event for setMouseCallBack
-def on_click(event,x,y,flags,param)
+def on_click(event,x,y,flags,param):
 
 	global image,man_contours
 
@@ -101,7 +101,7 @@ def main():
 		# approximate the contour
 		peri = cv2.arcLength(c, True)
 		approx = cv2.approxPolyDP(c, 0.02 * peri, True)
-
+		print(type(approx))
 		# if our approximated contour has four points, then we
 		# can assume that we have found our screen
 		if len(approx) == 4:
@@ -111,8 +111,10 @@ def main():
 	#If 4 contours not found..
 	if len(approx!=4):
 		print("******Automatic Edge Detection Failed*******")
-		find_contours()
-		screenCnt = man_contours
+		#find_contours()
+		man_contours = [[114, 42], [108, 479], [748, 475], [742, 42]]
+		screenCnt = np.array(man_contours)
+		print(type(screenCnt),"From screenCnt")
 
 	# show the contour (outline) of the piece of paper
 	print("STEP 2: Find contours of paper")
@@ -124,13 +126,13 @@ def main():
 	# apply the four point transform to obtain a top-down
 	# view of the original image
 	warped = four_point_transform(orig, screenCnt.reshape(4, 2) * ratio)
-
+	cv2.imshow("Perspective Image",warped)
 	# convert the warped image to grayscale, then threshold it
 	# to give it that 'black and white' paper effect
 	warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
 
 
-	warped_blur = cv2.medianBlur(warped_blur,5)
+	warped_blur = cv2.medianBlur(warped,5)
 	# thresholdValue = threshold_otsu(gray_blur, 256)
 	# ret3,warped = cv2.threshold(gray_blur,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 	warped = cv2.adaptiveThreshold(warped_blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
@@ -142,9 +144,10 @@ def main():
 	# warped = warped.astype("uint8") * 255
 
 	# show the original and scanned images
+	cv2.imwrite("Final.jpg",warped)
 	print("STEP 3: Apply perspective transform")
-	cv2.imshow("Original", imutils.resize(orig, height = 650))
-	cv2.imshow("Scanned2", imutils.resize(warped, height = 650))
+	cv2.imshow("Original", orig)
+	cv2.imshow("Scanned2", warped)
 	cv2.waitKey(0)
 
 if __name__=='__main__':
