@@ -106,7 +106,8 @@ def main():
 	#If 4 contours not found..
 	if len(approx!=4):
 		print("******Automatic Edge Detection Failed*******")
-		screenCnt = find_contours()
+		find_contours()
+		screenCnt = man_contours
 
 	# show the contour (outline) of the piece of paper
 	print("STEP 2: Find contours of paper")
