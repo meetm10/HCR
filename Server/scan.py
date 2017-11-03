@@ -68,7 +68,8 @@ def pick_contours():
 
 
 def main():
-	global image
+	global image, screenCnt
+	screenCnt = []
 	# construct the argument parser and parse the arguments
 	ap = argparse.ArgumentParser()
 	ap.add_argument("-i", "--image", required = True,
@@ -78,9 +79,9 @@ def main():
 	# load the image and compute the ratio of the old height
 	# to the new height, clone it, and resize it
 	image = cv2.imread(args["image"])
-	#ratio = image.shape[0] / 500.0
+	ratio = image.shape[0] / 500.0
 	orig = image.copy()
-	#image = imutils.resize(image, height = 500)
+	image = imutils.resize(image, height = 500)
 
 	# convert the image to grayscale, blur it, and find edges
 	# in the image
@@ -101,13 +102,15 @@ def main():
 	# find the contours in the edged image, keeping only the
 	# largest ones, and initialize the screen contour
 	(cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-	cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:5]
+	cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:15]
 
 	# loop over the contours
 	for c in cnts:
 		# approximate the contour
+		
 		peri = cv2.arcLength(c, True)
 		approx = cv2.approxPolyDP(c, 0.02 * peri, True)
+		#print(approx)
 		#print(type(approx))
 		# if our approximated contour has four points, then we
 		# can assume that we have found our screen
@@ -116,7 +119,7 @@ def main():
 			break
 
 	#If 4 contours not found..
-	if len(approx!=4):
+	if len(screenCnt)!=4:
 		print("******Automatic Edge Detection Failed*******")
 		pick_contours()
 		#man_contours = [[114, 42], [108, 479], [748, 475], [742, 42]]
@@ -134,7 +137,7 @@ def main():
 
 	# apply the four point transform to obtain a top-down
 	# view of the original image
-	warped = four_point_transform(orig, screenCnt.reshape(4, 2))
+	warped = four_point_transform(orig, screenCnt.reshape(4, 2)*ratio)
 	#cv2.imshow("Perspective Image",warped)
 	cv2.imwrite("Corrected Perspective.jpg",warped)
 	# convert the warped image to grayscale, then threshold it
