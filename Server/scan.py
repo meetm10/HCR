@@ -90,8 +90,11 @@ def main():
 
 	# show the original image and the edge detected image
 	print("STEP 1: Edge Detection")
+	cv2.namedWindow("Image",cv2.WINDOW_NORMAL)
 	cv2.imshow("Image", image)
+	cv2.namedWindow("Edged",cv2.WINDOW_NORMAL)
 	cv2.imshow("Edged", edged)
+	cv2.imwrite("Edged.jpg",edged)
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()
 
@@ -105,7 +108,7 @@ def main():
 		# approximate the contour
 		peri = cv2.arcLength(c, True)
 		approx = cv2.approxPolyDP(c, 0.02 * peri, True)
-		print(type(approx))
+		#print(type(approx))
 		# if our approximated contour has four points, then we
 		# can assume that we have found our screen
 		if len(approx) == 4:
@@ -118,12 +121,14 @@ def main():
 		pick_contours()
 		#man_contours = [[114, 42], [108, 479], [748, 475], [742, 42]]
 		screenCnt = np.array(man_contours)
-		print(type(screenCnt),"From screenCnt")
+		#print(type(screenCnt),"From screenCnt")
 
 	# show the contour (outline) of the piece of paper
 	print("STEP 2: Find contours of paper")
-	cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 2)
+	cv2.namedWindow("Outline",cv2.WINDOW_NORMAL)
+	cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 7)
 	cv2.imshow("Outline", image)
+	cv2.imwrite("Outline.jpg",image)
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()
 
@@ -149,10 +154,15 @@ def main():
 	# warped = warped.astype("uint8") * 255
 
 	# show the original and scanned images
-	cv2.imwrite("Final.jpg",warped)
+	
 	print("STEP 3: Apply perspective transform")
+	cv2.namedWindow("Original",cv2.WINDOW_NORMAL)
 	cv2.imshow("Original", orig)
+	cv2.imwrite("Original.jpg",orig)
+	cv2.namedWindow("Scanned2",cv2.WINDOW_NORMAL)
 	cv2.imshow("Scanned2", warped)
+	cv2.imwrite("Final.jpg",warped)
+
 	cv2.waitKey(0)
 
 if __name__=='__main__':
