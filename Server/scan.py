@@ -58,6 +58,9 @@ def find_contours():
 		cv2.imshow("image", image)
 		key = cv2.waitKey(1) & 0xFF
 
+		if key == 'q':
+			break
+
 	print("****Finished Finding Contours******")
 
 
