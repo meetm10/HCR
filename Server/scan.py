@@ -41,8 +41,8 @@ def on_click(event,x,y,flags,param):
 	return
 
 
-#Manually find contours for Edge Detection
-def find_contours():
+#Manually pick contours for Edge Detection
+def pick_contours():
 
 	global image,man_contours
 
@@ -114,7 +114,7 @@ def main():
 	#If 4 contours not found..
 	if len(approx!=4):
 		print("******Automatic Edge Detection Failed*******")
-		find_contours()
+		pick_contours()
 		#man_contours = [[114, 42], [108, 479], [748, 475], [742, 42]]
 		screenCnt = np.array(man_contours)
 		print(type(screenCnt),"From screenCnt")
