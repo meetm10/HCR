@@ -74,9 +74,9 @@ def main():
 	# load the image and compute the ratio of the old height
 	# to the new height, clone it, and resize it
 	image = cv2.imread(args["image"])
-	ratio = image.shape[0] / 500.0
+	#ratio = image.shape[0] / 500.0
 	orig = image.copy()
-	image = imutils.resize(image, height = 500)
+	#image = imutils.resize(image, height = 500)
 
 	# convert the image to grayscale, blur it, and find edges
 	# in the image
@@ -111,8 +111,8 @@ def main():
 	#If 4 contours not found..
 	if len(approx!=4):
 		print("******Automatic Edge Detection Failed*******")
-		#find_contours()
-		man_contours = [[114, 42], [108, 479], [748, 475], [742, 42]]
+		find_contours()
+		#man_contours = [[114, 42], [108, 479], [748, 475], [742, 42]]
 		screenCnt = np.array(man_contours)
 		print(type(screenCnt),"From screenCnt")
 
