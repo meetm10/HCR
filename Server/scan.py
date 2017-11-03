@@ -49,7 +49,7 @@ def pick_contours():
 	print("\n\n*********Manually Finding Contours, click on 4 corners to select a Region***********")
 
 	#Create a window and setMouseCallback
-	cv2.namedWindow("image")
+	cv2.namedWindow("image",cv2.WINDOW_NORMAL)
 	cv2.setMouseCallback("image",on_click)
 
 	# keep looping until the 'q' key is pressed
@@ -57,8 +57,9 @@ def pick_contours():
 		# display the image and wait for a keypress
 		cv2.imshow("image", image)
 		key = cv2.waitKey(1) & 0xFF
-
-		if key == 'q':
+		#print(type(key))
+		#print(key,"Key")
+		if key == ord('q'):
 			break
 
 	print("****Finished Finding Contours******")
@@ -128,8 +129,9 @@ def main():
 
 	# apply the four point transform to obtain a top-down
 	# view of the original image
-	warped = four_point_transform(orig, screenCnt.reshape(4, 2) * ratio)
-	cv2.imshow("Perspective Image",warped)
+	warped = four_point_transform(orig, screenCnt.reshape(4, 2))
+	#cv2.imshow("Perspective Image",warped)
+	cv2.imwrite("Corrected Perspective.jpg",warped)
 	# convert the warped image to grayscale, then threshold it
 	# to give it that 'black and white' paper effect
 	warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
