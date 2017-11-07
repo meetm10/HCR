@@ -5,7 +5,6 @@
 from __future__ import print_function
 from pyimagesearch.transform import four_point_transform
 from pyimagesearch import imutils
-from skimage.filters.thresholding import threshold_otsu
 import numpy as np
 import argparse
 import cv2
@@ -101,7 +100,7 @@ def main():
 
 	# find the contours in the edged image, keeping only the
 	# largest ones, and initialize the screen contour
-	(cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+	(_, cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 	cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:15]
 
 	# loop over the contours
