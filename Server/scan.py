@@ -163,7 +163,7 @@ def main():
 	cv2.imwrite("Original.jpg",orig)
 	cv2.namedWindow("Scanned2",cv2.WINDOW_NORMAL)
 	cv2.imshow("Scanned2", warped)
-	cv2.imwrite("Final.jpg",warped)
+	cv2.imwrite("Binarized.jpg",warped)
 
 	cv2.waitKey(0)
 
