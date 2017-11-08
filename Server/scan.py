@@ -25,30 +25,16 @@ def on_click(event,x,y,flags,param):
 		if len(man_contours)==4:
 			print("*****Found 4 Contours :",man_contours)
 			
-			#Line drawing feature...
-			# Drawing Polygon
-
-			# To draw a polygon, first you need coordinates of vertices. Make those points into an array of shape ROWSx1x2 where ROWS are number of vertices and it should be of type int32. Here we draw a small polygon of with four vertices in yellow color.
-			#pts = np.array(man_contours)
-			#pts = pts.reshape((-1,1,2))
-			#cv2.polylines(image,[pts],True,(0,255,255))
-			#cv2.imshow("image", image)
-			#     pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
-			#     pts = pts.reshape((-1,1,2))
-			#     cv2.polylines(img,[pts],True,(0,255,255))
-			
 	return
 
 
 #Manually pick contours for Edge Detection
 def pick_contours():
-
 	global image,man_contours
 
 	print("\n\n*********Manually Finding Contours, click on 4 corners to select a Region***********")
 
 	#Create a window and setMouseCallback
-	cv2.destroyAllWindows()
 	cv2.namedWindow("Image",cv2.WINDOW_NORMAL)
 	cv2.setMouseCallback("Image",on_click)
 
@@ -57,19 +43,19 @@ def pick_contours():
 		# display the image and wait for a keypress
 		cv2.imshow("Image", image)
 		key = cv2.waitKey(1) & 0xFF
-		#print(type(key))	
-		#print(key,"Key")
 		if key == ord('q'):
 			break
 
 	print("****Finished Finding Contours******")
 
-
-
+	return
 
 def main():
 	global image, screenCnt
+	
+	#ScreenCountours..
 	screenCnt = []
+	
 	# construct the argument parser and parse the arguments
 	ap = argparse.ArgumentParser()
 	ap.add_argument("-i", "--image", required = True,
@@ -107,11 +93,9 @@ def main():
 	# loop over the contours
 	for c in cnts:
 		# approximate the contour
-		
 		peri = cv2.arcLength(c, True)
 		approx = cv2.approxPolyDP(c, 0.02 * peri, True)
-		#print(approx)
-		#print(type(approx))
+	
 		# if our approximated contour has four points, then we
 		# can assume that we have found our screen
 		if len(approx) == 4:
@@ -122,67 +106,58 @@ def main():
 	if len(screenCnt)!=4:
 		print("******Automatic Edge Detection Failed*******")
 		pick_contours()
-		#man_contours = [[114, 42], [108, 479], [748, 475], [742, 42]]
 		screenCnt = np.array(man_contours)
-		#print(type(screenCnt),"From screenCnt")
-
+	
 	# show the contour (outline) of the piece of paper
 	print("STEP 2: Find contours of paper")
 	cv2.namedWindow("Outline",cv2.WINDOW_NORMAL)
-	cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 7)
+	cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 4)
 	cv2.imshow("Outline", image)
 	cv2.waitKey(0)
+	cv2.destroyAllWindows()
 
-	print("Is this output fine?? Do you want to pick Contours Manully? Y/N : ", end="")
+	print("Is the Output Satisfactory? \nDo you want to pick Contours Manully? Y/N : ", end="")
 	response = input()
+
 	if response.upper()=="Y":
+	
 		#Reset the image
 		image = orig.copy()
 		pick_contours()
 		screenCnt = np.array(man_contours)
-		cv2.namedWindow("Outline",cv2.WINDOW_NORMAL)
 		cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 7)
+		
+		cv2.namedWindow("Outline",cv2.WINDOW_NORMAL)
 		cv2.imshow("Outline", image)
 		cv2.waitKey(0)
 		cv2.destroyAllWindows()
 
 
-	# cv2.imwrite("Outline.jpg",image)
-	# cv2.waitKey(0)
-	# cv2.destroyAllWindows()
-
 	# apply the four point transform to obtain a top-down
 	# view of the original image
 	warped = four_point_transform(orig, screenCnt.reshape(4, 2)*ratio)
-	#cv2.imshow("Perspective Image",warped)
+
 	cv2.imwrite("Corrected Perspective.jpg",warped)
+
 	# convert the warped image to grayscale, then threshold it
 	# to give it that 'black and white' paper effect
-	warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
+	gray_warped = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
 
 
-	warped_blur = cv2.medianBlur(warped,5)
+	gray_warped_blur = cv2.medianBlur(gray_warped,5)
 	# thresholdValue = threshold_otsu(gray_blur, 256)
 	# ret3,warped = cv2.threshold(gray_blur,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-	warped = cv2.adaptiveThreshold(warped_blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
-			cv2.THRESH_BINARY,3,2)
-
-	#print(type(warped))
-	#cv2.imwrite(warped,"MedianBlur1.bmp")
-	# warped = gray_blur > thresholdValue
-	# warped = warped.astype("uint8") * 255
+	binarized = cv2.adaptiveThreshold(gray_warped_blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
+										cv2.THRESH_BINARY,3,2)
 
 	# show the original and scanned images
-	
 	print("STEP 3: Apply perspective transform")
-	cv2.namedWindow("Original",cv2.WINDOW_NORMAL)
-	cv2.imshow("Original", orig)
 	cv2.imwrite("Original.jpg",orig)
-	cv2.namedWindow("Scanned2",cv2.WINDOW_NORMAL)
-	cv2.imshow("Scanned2", warped)
+	cv2.namedWindow("Scanned",cv2.WINDOW_NORMAL)
+	cv2.imshow("Scanned", warped)
 	cv2.imwrite("Binarized.jpg",warped)
-
 	cv2.waitKey(0)
+	cv2.destroyAllWindows()
 
 if __name__=='__main__':
 	main()
