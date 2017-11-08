@@ -48,15 +48,16 @@ def pick_contours():
 	print("\n\n*********Manually Finding Contours, click on 4 corners to select a Region***********")
 
 	#Create a window and setMouseCallback
-	cv2.namedWindow("image",cv2.WINDOW_NORMAL)
-	cv2.setMouseCallback("image",on_click)
+	cv2.destroyAllWindows()
+	cv2.namedWindow("Image",cv2.WINDOW_NORMAL)
+	cv2.setMouseCallback("Image",on_click)
 
 	# keep looping until the 'q' key is pressed
 	while True:
 		# display the image and wait for a keypress
-		cv2.imshow("image", image)
+		cv2.imshow("Image", image)
 		key = cv2.waitKey(1) & 0xFF
-		#print(type(key))
+		#print(type(key))	
 		#print(key,"Key")
 		if key == ord('q'):
 			break
@@ -130,9 +131,25 @@ def main():
 	cv2.namedWindow("Outline",cv2.WINDOW_NORMAL)
 	cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 7)
 	cv2.imshow("Outline", image)
-	cv2.imwrite("Outline.jpg",image)
 	cv2.waitKey(0)
-	cv2.destroyAllWindows()
+
+	print("Is this output fine?? Do you want to pick Contours Manully? Y/N : ", end="")
+	response = input()
+	if response.upper()=="Y":
+		#Reset the image
+		image = orig.copy()
+		pick_contours()
+		screenCnt = np.array(man_contours)
+		cv2.namedWindow("Outline",cv2.WINDOW_NORMAL)
+		cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 7)
+		cv2.imshow("Outline", image)
+		cv2.waitKey(0)
+		cv2.destroyAllWindows()
+
+
+	# cv2.imwrite("Outline.jpg",image)
+	# cv2.waitKey(0)
+	# cv2.destroyAllWindows()
 
 	# apply the four point transform to obtain a top-down
 	# view of the original image
